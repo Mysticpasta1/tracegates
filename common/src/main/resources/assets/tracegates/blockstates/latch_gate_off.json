@@ -1,0 +1,6 @@
+{
+  "variants": {
+    "lit=true": {"model": "tracegates:block/latch_gate_off_lit"},
+    "lit=false": {"model": "tracegates:block/latch_gate_off_unlit"}
+  }
+}

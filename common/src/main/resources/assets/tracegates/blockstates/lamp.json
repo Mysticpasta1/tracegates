@@ -1,0 +1,6 @@
+{
+  "variants": {
+    "lit=true": {"model": "tracegates:block/lamp_lit"},
+    "lit=false": {"model": "tracegates:block/lamp_unlit"}
+  }
+}

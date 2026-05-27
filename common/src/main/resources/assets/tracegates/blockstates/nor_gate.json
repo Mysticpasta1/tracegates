@@ -1,0 +1,6 @@
+{
+  "variants": {
+    "lit=true": {"model": "tracegates:block/nor_gate_lit"},
+    "lit=false": {"model": "tracegates:block/nor_gate_unlit"}
+  }
+}

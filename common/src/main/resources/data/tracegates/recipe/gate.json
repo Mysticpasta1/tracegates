@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "redstone",
+  "key": {
+    "C": {"item": "minecraft:comparator"},
+    "R": {"item": "minecraft:redstone"}
+  },
+  "pattern": [
+    " R ",
+    "RCR",
+    " R "
+  ],
+  "result": {
+    "count": 4,
+    "id": "tracegates:buffer_gate"
+  }
+}

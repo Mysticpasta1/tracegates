@@ -1,0 +1,6 @@
+{
+  "parent": "tracegates:block/trace_lit",
+  "textures": {
+    "all": "tracegates:block/latch_gate_off_unlit"
+  }
+}

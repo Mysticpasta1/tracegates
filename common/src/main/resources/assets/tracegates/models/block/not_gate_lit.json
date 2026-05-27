@@ -1,0 +1,6 @@
+{
+  "parent": "tracegates:block/trace_lit",
+  "textures": {
+    "all": "tracegates:block/not_gate_lit"
+  }
+}

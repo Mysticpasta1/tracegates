@@ -1,0 +1,10 @@
+{
+  "overrides": [
+    { "predicate": { "custom_model_data": 0 }, "model": "tracegates:block/bus_lit_red" },
+    { "predicate": { "custom_model_data": 1 }, "model": "tracegates:block/bus_lit_green" },
+    { "predicate": { "custom_model_data": 2 }, "model": "tracegates:block/bus_lit_blue" },
+    { "predicate": { "custom_model_data": 3 }, "model": "tracegates:block/bus_lit_cyan" },
+    { "predicate": { "custom_model_data": 4 }, "model": "tracegates:block/bus_lit_magenta" },
+    { "predicate": { "custom_model_data": 5 }, "model": "tracegates:block/bus_lit_yellow" }
+  ]
+}

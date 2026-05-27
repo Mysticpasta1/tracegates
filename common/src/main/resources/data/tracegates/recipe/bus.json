@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "redstone",
+  "key": {
+    "T": {"item": "tracegates:trace"},
+    "R": {"item": "minecraft:redstone"}
+  },
+  "pattern": [
+    " T ",
+    "TRT",
+    " T "
+  ],
+  "result": {
+    "count": 8,
+    "id": "tracegates:bus"
+  }
+}

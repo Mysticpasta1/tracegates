@@ -1,0 +1,6 @@
+{
+  "parent": "tracegates:block/trace_lit",
+  "textures": {
+    "all": "tracegates:block/write_trace_lit"
+  }
+}

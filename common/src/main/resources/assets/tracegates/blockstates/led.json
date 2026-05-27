@@ -1,0 +1,12 @@
+{
+  "variants": {
+    "state=0": {"model": "tracegates:block/led_0"},
+    "state=1": {"model": "tracegates:block/led_1"},
+    "state=2": {"model": "tracegates:block/led_2"},
+    "state=3": {"model": "tracegates:block/led_3"},
+    "state=4": {"model": "tracegates:block/led_4"},
+    "state=5": {"model": "tracegates:block/led_5"},
+    "state=6": {"model": "tracegates:block/led_6"},
+    "state=7": {"model": "tracegates:block/led_7"}
+  }
+}

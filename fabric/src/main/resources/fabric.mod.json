@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "id": "tracegates",
+  "version": "${version}",
+  "name": "TraceGates",
+  "description": "This mod adds logic gates like the ones from Virtual Circuit Board.",
+  "authors": [
+    "Soupster"
+  ],
+  "contact": {
+    "homepage": "",
+    "sources": "https://github.com/YuboingiriroBobobiko/tracegates"
+  },
+  "license": "MIT",
+  "icon": "assets/tracegates/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "jan.yuboingirirobobobiko.fabric.TraceGatesFabric"
+    ],
+    "client": [
+      "jan.yuboingirirobobobiko.fabric.client.TraceGatesFabricClient"
+    ]
+  },
+  "mixins": [
+    "tracegates.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.19.2",
+    "minecraft": "~1.21.1",
+    "java": ">=21",
+    "architectury": ">=13.0.8",
+    "fabric-api": "*"
+  },
+  "suggests": {
+    "another-mod": "*"
+  }
+}

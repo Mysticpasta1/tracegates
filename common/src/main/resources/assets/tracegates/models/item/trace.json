@@ -1,0 +1,20 @@
+{
+  "overrides": [
+    { "predicate": { "custom_model_data": 0 }, "model": "tracegates:block/trace_lit_grey" },
+    { "predicate": { "custom_model_data": 1 }, "model": "tracegates:block/trace_lit_white" },
+    { "predicate": { "custom_model_data": 2 }, "model": "tracegates:block/trace_lit_red" },
+    { "predicate": { "custom_model_data": 3 }, "model": "tracegates:block/trace_lit_orange" },
+    { "predicate": { "custom_model_data": 4 }, "model": "tracegates:block/trace_lit_gold" },
+    { "predicate": { "custom_model_data": 5 }, "model": "tracegates:block/trace_lit_yellow" },
+    { "predicate": { "custom_model_data": 6 }, "model": "tracegates:block/trace_lit_lemon" },
+    { "predicate": { "custom_model_data": 7 }, "model": "tracegates:block/trace_lit_lime" },
+    { "predicate": { "custom_model_data": 8 }, "model": "tracegates:block/trace_lit_green" },
+    { "predicate": { "custom_model_data": 9 }, "model": "tracegates:block/trace_lit_turquoise" },
+    { "predicate": { "custom_model_data": 10 }, "model": "tracegates:block/trace_lit_sky" },
+    { "predicate": { "custom_model_data": 11 }, "model": "tracegates:block/trace_lit_blue" },
+    { "predicate": { "custom_model_data": 12 }, "model": "tracegates:block/trace_lit_sapphire" },
+    { "predicate": { "custom_model_data": 13 }, "model": "tracegates:block/trace_lit_purple" },
+    { "predicate": { "custom_model_data": 14 }, "model": "tracegates:block/trace_lit_violet" },
+    { "predicate": { "custom_model_data": 15 }, "model": "tracegates:block/trace_lit_pink" }
+  ]
+}

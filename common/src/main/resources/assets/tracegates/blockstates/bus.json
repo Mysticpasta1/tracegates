@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "colour=0,lit=true": {"model": "tracegates:block/bus_lit_red"},
+    "colour=0,lit=false": {"model": "tracegates:block/bus_unlit_red"},
+    "colour=1,lit=true": {"model": "tracegates:block/bus_lit_green"},
+    "colour=1,lit=false": {"model": "tracegates:block/bus_unlit_green"},
+    "colour=2,lit=true": {"model": "tracegates:block/bus_lit_blue"},
+    "colour=2,lit=false": {"model": "tracegates:block/bus_unlit_blue"},
+    "colour=3,lit=true": {"model": "tracegates:block/bus_lit_cyan"},
+    "colour=3,lit=false": {"model": "tracegates:block/bus_unlit_cyan"},
+    "colour=4,lit=true": {"model": "tracegates:block/bus_lit_magenta"},
+    "colour=4,lit=false": {"model": "tracegates:block/bus_unlit_magenta"},
+    "colour=5,lit=true": {"model": "tracegates:block/bus_lit_yellow"},
+    "colour=5,lit=false": {"model": "tracegates:block/bus_unlit_yellow"}
+  }
+}
