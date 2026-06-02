@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "redstone",
+  "key": {
+    "R": {"item": "minecraft:redstone"},
+    "O": {"item": "minecraft:observer"}
+  },
+  "pattern": [
+    " R ",
+    "ROR",
+    " R "
+  ],
+  "result": {
+    "count": 4,
+    "id": "tracegates:xor_gate"
+  }
+}

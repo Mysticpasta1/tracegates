@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "redstone",
+  "key": {
+    "R": {"item": "minecraft:repeater"},
+    "D": {"item": "minecraft:redstone"},
+    "T": {"item": "tracegates:trace"}
+  },
+  "pattern": [
+    " T ",
+    "DRD",
+    " T "
+  ],
+  "result": {
+    "count": 4,
+    "id": "tracegates:read_trace"
+  }
+}

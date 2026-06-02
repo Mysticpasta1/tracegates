@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "redstone",
+  "key": {
+    "R": {"item": "minecraft:redstone"},
+    "L": {"item": "minecraft:lever"}
+  },
+  "pattern": [
+    " R ",
+    "RLR",
+    " R "
+  ],
+  "result": {
+    "count": 4,
+    "id": "tracegates:or_gate"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "redstone",
+  "key": {
+    "R": {"item": "minecraft:redstone"},
+    "D": {"item": "minecraft:daylight_detector"}
+  },
+  "pattern": [
+    " R ",
+    "RDR",
+    " R "
+  ],
+  "result": {
+    "count": 4,
+    "id": "tracegates:xnor_gate"
+  }
+}

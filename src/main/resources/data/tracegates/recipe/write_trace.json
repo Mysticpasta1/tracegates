@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "redstone",
+  "key": {
+    "C": {"item": "minecraft:comparator"},
+    "R": {"item": "minecraft:redstone"},
+    "T": {"item": "tracegates:trace"}
+  },
+  "pattern": [
+    " T ",
+    "RCR",
+    " T "
+  ],
+  "result": {
+    "count": 4,
+    "id": "tracegates:write_trace"
+  }
+}
