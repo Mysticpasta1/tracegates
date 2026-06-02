@@ -20,12 +20,12 @@ public class WriteTraceItem extends BlockItem {
     @Override @NotNull
     public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand usedHand) {
         if (player.isSecondaryUseActive()) {
-            ItemStack stack = new ItemStack(ModRegistries.Items.TRACE);
+            ItemStack stack = new ItemStack(ModRegistries.Items.TRACE.get());
             stack.setCount(player.getItemInHand(usedHand).getCount());
             TraceBlock.setItemStack(stack, 15);
             return InteractionResultHolder.pass(stack);
         } else {
-            ItemStack stack = new ItemStack(ModRegistries.Items.READ_TRACE);
+            ItemStack stack = new ItemStack(ModRegistries.Items.READ_TRACE.get());
             stack.setCount(player.getItemInHand(usedHand).getCount());
             return InteractionResultHolder.pass(stack);
         }

@@ -1,6 +1,5 @@
 package jan.yuboingirirobobobiko.item;
 
-import dev.architectury.registry.registries.RegistrySupplier;
 import jan.yuboingirirobobobiko.ModRegistries;
 import jan.yuboingirirobobobiko.TraceGates;
 import jan.yuboingirirobobobiko.trace.TraceType;
@@ -16,17 +15,17 @@ import org.jetbrains.annotations.NotNull;
 
 public class GateCycleItem extends BlockItem {
     private final Block block;
-    
+
     public GateCycleItem(Block block, Properties properties) {
         super(block, properties);
         this.block = block;
     }
-    
+
     @Override @NotNull
     public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand usedHand) {
         ItemStack oldStack = player.getItemInHand(usedHand);
-        
-        RegistrySupplier<Item> item;
+
+        Item item;
         if (player.isSecondaryUseActive()) {
             item = prevItem(block);
         } else {
@@ -37,38 +36,44 @@ public class GateCycleItem extends BlockItem {
         stack.setCount(oldStack.getCount());
         return InteractionResultHolder.pass(stack);
     }
-    
-    private static RegistrySupplier<Item> nextItem(Block block) {
+
+    private static Item nextItem(Block block) {
+        if (block == null) {
+            TraceGates.LOGGER.error("Null block in gate cycle");
+            return null;
+        }
         switch (TraceType.getBlockType(block)) {
-            case BUFFER_GATE -> { return ModRegistries.Items.NOT_GATE; }
-            case NOT_GATE -> { return ModRegistries.Items.OR_GATE; }
-            case OR_GATE -> { return ModRegistries.Items.NOR_GATE; }
-            case NOR_GATE -> { return ModRegistries.Items.AND_GATE; }
-            case AND_GATE -> { return ModRegistries.Items.NAND_GATE; }
-            case NAND_GATE -> { return ModRegistries.Items.XOR_GATE; }
-            case XOR_GATE -> { return ModRegistries.Items.XNOR_GATE; }
-            case XNOR_GATE -> { return ModRegistries.Items.LATCH_GATE_OFF; }
-            case LATCH_GATE_OFF -> { return ModRegistries.Items.LATCH_GATE_ON; }
-            case LATCH_GATE_ON -> { return ModRegistries.Items.BUFFER_GATE; }
+            case BUFFER_GATE -> { return ModRegistries.Items.NOT_GATE.get(); }
+            case NOT_GATE -> { return ModRegistries.Items.OR_GATE.get(); }
+            case OR_GATE -> { return ModRegistries.Items.NOR_GATE.get(); }
+            case NOR_GATE -> { return ModRegistries.Items.AND_GATE.get(); }
+            case AND_GATE -> { return ModRegistries.Items.NAND_GATE.get(); }
+            case NAND_GATE -> { return ModRegistries.Items.XOR_GATE.get(); }
+            case XOR_GATE -> { return ModRegistries.Items.XNOR_GATE.get(); }
+            case XNOR_GATE -> { return ModRegistries.Items.LATCH_GATE_OFF.get(); }
+            case LATCH_GATE_OFF -> { return ModRegistries.Items.LATCH_GATE_ON.get(); }
+            case LATCH_GATE_ON -> { return ModRegistries.Items.BUFFER_GATE.get(); }
             case TRACE, BUS, LED, LAMP -> TraceGates.LOGGER.error("Invalid block in gate cycle");
-            case null -> TraceGates.LOGGER.error("Null block in gate cycle");
         }
         return null;
     }
-    private static RegistrySupplier<Item> prevItem(Block block) {
+    private static Item prevItem(Block block) {
+        if (block == null) {
+            TraceGates.LOGGER.error("Null block in gate cycle");
+            return null;
+        }
         switch (TraceType.getBlockType(block)) {
-            case BUFFER_GATE -> { return ModRegistries.Items.LATCH_GATE_ON; }
-            case NOT_GATE -> { return ModRegistries.Items.BUFFER_GATE; }
-            case OR_GATE -> { return ModRegistries.Items.NOT_GATE; }
-            case NOR_GATE -> { return ModRegistries.Items.OR_GATE; }
-            case AND_GATE -> { return ModRegistries.Items.NOR_GATE; }
-            case NAND_GATE -> { return ModRegistries.Items.AND_GATE; }
-            case XOR_GATE -> { return ModRegistries.Items.NAND_GATE; }
-            case XNOR_GATE -> { return ModRegistries.Items.XOR_GATE; }
-            case LATCH_GATE_OFF -> { return ModRegistries.Items.XNOR_GATE; }
-            case LATCH_GATE_ON -> { return ModRegistries.Items.LATCH_GATE_OFF; }
+            case BUFFER_GATE -> { return ModRegistries.Items.LATCH_GATE_ON.get(); }
+            case NOT_GATE -> { return ModRegistries.Items.BUFFER_GATE.get(); }
+            case OR_GATE -> { return ModRegistries.Items.NOT_GATE.get(); }
+            case NOR_GATE -> { return ModRegistries.Items.OR_GATE.get(); }
+            case AND_GATE -> { return ModRegistries.Items.NOR_GATE.get(); }
+            case NAND_GATE -> { return ModRegistries.Items.AND_GATE.get(); }
+            case XOR_GATE -> { return ModRegistries.Items.NAND_GATE.get(); }
+            case XNOR_GATE -> { return ModRegistries.Items.XOR_GATE.get(); }
+            case LATCH_GATE_OFF -> { return ModRegistries.Items.XNOR_GATE.get(); }
+            case LATCH_GATE_ON -> { return ModRegistries.Items.LATCH_GATE_OFF.get(); }
             case TRACE, BUS, LED, LAMP -> TraceGates.LOGGER.error("Invalid block in gate cycle");
-            case null -> TraceGates.LOGGER.error("Null block in gate cycle");
         }
         return null;
     }

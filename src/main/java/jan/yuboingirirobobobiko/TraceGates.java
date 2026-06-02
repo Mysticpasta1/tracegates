@@ -1,18 +1,24 @@
 package jan.yuboingirirobobobiko;
 
-import dev.architectury.event.events.common.CommandRegistrationEvent;
-import dev.architectury.event.events.common.LifecycleEvent;
-import dev.architectury.event.events.common.TickEvent;
 import jan.yuboingirirobobobiko.trace.GlobalTraceNetwork;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.event.RegisterCommandsEvent;
+import net.minecraftforge.event.TickEvent;
+import net.minecraftforge.event.server.ServerStartingEvent;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+@Mod(TraceGates.MOD_ID)
 public final class TraceGates {
     public static final String MOD_ID = "tracegates";
     public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
 
     public static GlobalTraceNetwork traceNetwork = null;
-    
+
     public static final String[] TRACE_NAMES = new String[]{
             "grey",
             "white",
@@ -39,20 +45,26 @@ public final class TraceGates {
             "magenta",
             "yellow",
     };
-    
-    public static void init() {
-        ModRegistries.register();
-        
-        LifecycleEvent.SERVER_STARTING.register((server) -> {
-            // GlobalTraceNetwork could be static, but would be more work to track cleanup.
-            traceNetwork = new GlobalTraceNetwork(server);
-        });
-        
-        TickEvent.SERVER_LEVEL_POST.register((level) -> {
+
+    public TraceGates() {
+        ModRegistries.register(FMLJavaModLoadingContext.get().getModEventBus());
+        MinecraftForge.EVENT_BUS.register(this);
+    }
+
+    @SubscribeEvent
+    public void onServerStarting(ServerStartingEvent event) {
+        traceNetwork = new GlobalTraceNetwork(event.getServer());
+    }
+
+    @SubscribeEvent
+    public void onLevelTick(TickEvent.LevelTickEvent event) {
+        if (event.phase == TickEvent.Phase.END && traceNetwork != null && event.level instanceof ServerLevel level) {
             traceNetwork.tick(level);
-        });
-        
-        CommandRegistrationEvent.EVENT.register((dispatcher, registry, selection) ->
-                ModCommands.buildCommands(dispatcher));
+        }
+    }
+
+    @SubscribeEvent
+    public void onRegisterCommands(RegisterCommandsEvent event) {
+        ModCommands.buildCommands(event.getDispatcher());
     }
 }

@@ -16,14 +16,14 @@ public abstract class BaseBaseTraceBlock extends Block {
     }
     
     @Override
-    protected void onPlace(BlockState state, Level level, BlockPos pos, BlockState oldState, boolean movedByPiston) {
+    public void onPlace(BlockState state, Level level, BlockPos pos, BlockState oldState, boolean movedByPiston) {
         if (level.isClientSide()) return;
         
         TraceGates.traceNetwork.placeTraceBlock(level, pos);
     }
     
     @Override
-    protected void onRemove(BlockState state, Level level, BlockPos pos, BlockState newState, boolean movedByPiston) {
+    public void onRemove(BlockState state, Level level, BlockPos pos, BlockState newState, boolean movedByPiston) {
         if (level.isClientSide()) return;
         
         if (movedByPiston) {

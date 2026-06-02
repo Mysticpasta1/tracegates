@@ -17,7 +17,7 @@ public class LampItem extends BlockItem {
     
     @Override @NotNull
     public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand usedHand) {
-        ItemStack stack = new ItemStack(ModRegistries.Items.LED);
+        ItemStack stack = new ItemStack(ModRegistries.Items.LED.get());
         stack.setCount(player.getItemInHand(usedHand).getCount());
         return InteractionResultHolder.pass(stack);
     }

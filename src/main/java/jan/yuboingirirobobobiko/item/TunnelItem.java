@@ -17,7 +17,7 @@ public class TunnelItem extends BlockItem {
     
     @Override @NotNull
     public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand usedHand) {
-        ItemStack stack = new ItemStack(ModRegistries.Items.CROSS);
+        ItemStack stack = new ItemStack(ModRegistries.Items.CROSS.get());
         stack.setCount(player.getItemInHand(usedHand).getCount());
         return InteractionResultHolder.pass(stack);
     }

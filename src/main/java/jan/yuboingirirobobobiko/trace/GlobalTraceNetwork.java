@@ -9,7 +9,6 @@ import jan.yuboingirirobobobiko.block.TraceBlock;
 import jan.yuboingirirobobobiko.block.gate.LedBlock;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.IntArrayTag;
@@ -19,7 +18,6 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.datafix.DataFixTypes;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
@@ -57,14 +55,14 @@ public class GlobalTraceNetwork extends SavedData {
         ticksToRun = 0;
         visualUpdatesEnabled = true;
         
-        server.overworld().getDataStorage().computeIfAbsent(new Factory<>(() -> this, this::load, DataFixTypes.LEVEL), "trace_network");
+        server.overworld().getDataStorage().computeIfAbsent(this::load, () -> this, "trace_network");
     }
     
     private Level decodeLevel(String id) {
         if (id.isEmpty()) {
             return server.overworld();
         } else {
-            return server.getLevel(ResourceKey.create(Registries.DIMENSION, ResourceLocation.parse(id)));
+            return server.getLevel(ResourceKey.create(Registries.DIMENSION, ResourceLocation.tryParse(id)));
         }
     }
     private String encodeLevel(Level level) {
@@ -74,7 +72,7 @@ public class GlobalTraceNetwork extends SavedData {
     private TraceObject loadTrace(CompoundTag tag) {
         Level level = decodeLevel(tag.getString("level"));
         
-        int typeOrdinal = Math.clamp(tag.getInt("type"), 0, TraceType.values().length - 1);
+        int typeOrdinal = Math.max(0, Math.min(tag.getInt("type"), TraceType.values().length - 1));
         TraceType type = TraceType.values()[typeOrdinal];
         
         TraceObject trace = new TraceObject(level, type, tag.getInt("colour"), tag.getBoolean("state"),
@@ -96,7 +94,7 @@ public class GlobalTraceNetwork extends SavedData {
         return trace;
     }
     
-    private GlobalTraceNetwork load(CompoundTag tag, HolderLookup.Provider provider) {
+    private GlobalTraceNetwork load(CompoundTag tag) {
         TraceGates.LOGGER.info("Loading NBT Data");
         
         tickRate = Math.max(tag.getInt("tick_rate"), 1);
@@ -188,7 +186,7 @@ public class GlobalTraceNetwork extends SavedData {
     }
     
     @Override @NotNull
-    public CompoundTag save(CompoundTag tag, HolderLookup.Provider registries) {
+    public CompoundTag save(CompoundTag tag) {
         TraceGates.LOGGER.info("Saving NBT Data");
         
         tag.putInt("tick_rate", tickRate);
@@ -335,12 +333,12 @@ public class GlobalTraceNetwork extends SavedData {
         TraceObject otherTrace = getTraceAtPos(level, otherPos);
         if (otherTrace == null) {
             if (!canCross) return;
-            if (otherState.is(ModRegistries.Blocks.CROSS)) {
+            if (otherState.is(ModRegistries.Blocks.CROSS.get())) {
                 BlockPos pos = otherPos.relative(direction);
                 mergeTrace(level, trace, pos, null, state, false);
                 return;
             }
-            if (otherState.is(ModRegistries.Blocks.TUNNEL)) {
+            if (otherState.is(ModRegistries.Blocks.TUNNEL.get())) {
                 BlockPos pos = crossTunnel(level, otherPos, direction, state);
                 if (pos == null) return;
                 mergeTrace(level, trace, pos, null, state, false);
@@ -361,10 +359,10 @@ public class GlobalTraceNetwork extends SavedData {
         }
         
         if (otherTrace.type != trace.type) {
-            if (state.is(ModRegistries.Blocks.READ_TRACE)) connectTo(trace, otherTrace);
-            if (state.is(ModRegistries.Blocks.WRITE_TRACE)) connectTo(otherTrace, trace);
-            if (otherState.is(ModRegistries.Blocks.READ_TRACE)) connectTo(otherTrace, trace);
-            if (otherState.is(ModRegistries.Blocks.WRITE_TRACE)) connectTo(trace, otherTrace);
+            if (state.is(ModRegistries.Blocks.READ_TRACE.get())) connectTo(trace, otherTrace);
+            if (state.is(ModRegistries.Blocks.WRITE_TRACE.get())) connectTo(otherTrace, trace);
+            if (otherState.is(ModRegistries.Blocks.READ_TRACE.get())) connectTo(otherTrace, trace);
+            if (otherState.is(ModRegistries.Blocks.WRITE_TRACE.get())) connectTo(trace, otherTrace);
             return;
         }
         
@@ -497,8 +495,8 @@ public class GlobalTraceNetwork extends SavedData {
         
         BlockState state = level.getBlockState(pos);
         int colour = 0;
-        if (state.is(ModRegistries.Blocks.TRACE)) colour = state.getValue(TraceBlock.COLOUR);
-        if (state.is(ModRegistries.Blocks.BUS)) colour = state.getValue(BusBlock.COLOUR);
+        if (state.is(ModRegistries.Blocks.TRACE.get())) colour = state.getValue(TraceBlock.COLOUR);
+        if (state.is(ModRegistries.Blocks.BUS.get())) colour = state.getValue(BusBlock.COLOUR);
         TraceObject trace = new TraceObject(level, TraceType.getBlockType(state.getBlock()), colour);
         trace.addBlock(pos);
         for (Direction direction : Direction.values()) {
@@ -533,7 +531,7 @@ public class GlobalTraceNetwork extends SavedData {
         int NumConnections = 0;
         for (Direction direction : Direction.values()) {
             BlockState state = level.getBlockState(pos.relative(direction));
-            if (state.is(level.getBlockState(pos).getBlock()) || state.is(ModRegistries.Blocks.BUS)) {
+            if (state.is(level.getBlockState(pos).getBlock()) || state.is(ModRegistries.Blocks.BUS.get())) {
                 NumConnections++;
             }
         }
@@ -628,7 +626,7 @@ public class GlobalTraceNetwork extends SavedData {
                 trace.hasRedstoneUpdate = false;
                 boolean found = false;
                 for (BlockPos pos : trace.blocks) {
-                    if (trace.level.getBlockState(pos).is(ModRegistries.Blocks.WRITE_TRACE)) {
+                    if (trace.level.getBlockState(pos).is(ModRegistries.Blocks.WRITE_TRACE.get())) {
                         for (Direction direction : Direction.values()) {
                             if (trace.level.hasSignal(pos, direction)) {
                                 trace.setState(true);
@@ -678,7 +676,7 @@ public class GlobalTraceNetwork extends SavedData {
                 // A queue value of false means always update
                 if (trace.type == TraceType.LED) {
                     int newState = numInputsActive(trace) % 8;
-                    if (!updates.get(trace) || level.getBlockState(trace.blocks.getFirst()).getValue(LedBlock.STATE) != newState) {
+                    if (!updates.get(trace) || level.getBlockState(trace.blocks.get(0)).getValue(LedBlock.STATE) != newState) {
                         for (BlockPos pos : trace.blocks) {
                             BlockState state = level.getBlockState(pos);
                             level.setBlock(pos, state.setValue(LedBlock.STATE, newState), 2);
@@ -694,7 +692,7 @@ public class GlobalTraceNetwork extends SavedData {
                             continue;
                         }
                         int flags = 2;
-                        if (state.is(ModRegistries.Blocks.READ_TRACE)) flags = 3;
+                        if (state.is(ModRegistries.Blocks.READ_TRACE.get())) flags = 3;
                         level.setBlock(pos, state.setValue(BaseTraceBlock.LIT, trace.state), flags);
                     }
                     if (hasInvalidBlock) trace.blocks.removeIf(pos -> !(level.getBlockState(pos).getBlock() instanceof BaseTraceBlock));
@@ -717,7 +715,7 @@ public class GlobalTraceNetwork extends SavedData {
             }
             queuedStepTicks = 0;
             
-            if (level.tickRateManager().runsNormally() && ticking) {
+            if (ticking) {
                 ticksToRun += tickRate;
                 while (ticksToRun > 0) {
                     ticksToRun -= 20;

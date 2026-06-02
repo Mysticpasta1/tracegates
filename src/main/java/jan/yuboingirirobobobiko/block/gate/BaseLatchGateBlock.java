@@ -4,6 +4,7 @@ import jan.yuboingirirobobobiko.TraceGates;
 import jan.yuboingirirobobobiko.block.BaseTraceBlock;
 import jan.yuboingirirobobobiko.trace.TraceObject;
 import net.minecraft.core.BlockPos;
+import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
@@ -17,7 +18,7 @@ public class BaseLatchGateBlock extends BaseTraceBlock {
     }
     
     @Override @NotNull
-    public InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos, Player player, BlockHitResult hitResult) {
+    public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hitResult) {
         if (!level.isClientSide) {
             TraceObject trace = TraceGates.traceNetwork.getTraceAtPos(level, pos);
             if (trace != null) {
