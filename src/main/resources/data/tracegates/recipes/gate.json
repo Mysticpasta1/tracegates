@@ -2,16 +2,16 @@
   "type": "minecraft:crafting_shaped",
   "category": "redstone",
   "key": {
-    "R": {"item": "minecraft:redstone"},
-    "O": {"item": "minecraft:observer"}
+    "C": {"item": "minecraft:comparator"},
+    "R": {"item": "minecraft:redstone"}
   },
   "pattern": [
     " R ",
-    "ROR",
+    "RCR",
     " R "
   ],
   "result": {
     "count": 4,
-    "id": "tracegates:xor_gate"
+    "item": "tracegates:buffer_gate"
   }
 }

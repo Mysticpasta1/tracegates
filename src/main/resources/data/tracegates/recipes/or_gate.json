@@ -3,15 +3,15 @@
   "category": "redstone",
   "key": {
     "R": {"item": "minecraft:redstone"},
-    "B": {"item": "minecraft:redstone_block"}
+    "L": {"item": "minecraft:lever"}
   },
   "pattern": [
     " R ",
-    "RBR",
+    "RLR",
     " R "
   ],
   "result": {
     "count": 4,
-    "id": "tracegates:nor_gate"
+    "item": "tracegates:or_gate"
   }
 }

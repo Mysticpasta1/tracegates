@@ -2,16 +2,16 @@
   "type": "minecraft:crafting_shaped",
   "category": "redstone",
   "key": {
-    "L": {"item": "minecraft:redstone_lamp"},
-    "R": {"item": "minecraft:redstone"}
+    "R": {"item": "minecraft:redstone"},
+    "T": {"item": "minecraft:redstone_torch"}
   },
   "pattern": [
     " R ",
-    "RLR",
+    "RTR",
     " R "
   ],
   "result": {
     "count": 4,
-    "id": "tracegates:led"
+    "item": "tracegates:not_gate"
   }
 }

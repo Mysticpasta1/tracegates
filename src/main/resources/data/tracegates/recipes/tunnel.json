@@ -2,16 +2,16 @@
   "type": "minecraft:crafting_shaped",
   "category": "redstone",
   "key": {
-    "R": {"item": "minecraft:redstone"},
-    "C": {"item": "minecraft:comparator"}
+    "T": {"item": "tracegates:trace"},
+    "R": {"item": "minecraft:redstone"}
   },
   "pattern": [
+    "T T",
     " R ",
-    "RCR",
-    " R "
+    "T T"
   ],
   "result": {
     "count": 4,
-    "id": "tracegates:nand_gate"
+    "item": "tracegates:tunnel"
   }
 }

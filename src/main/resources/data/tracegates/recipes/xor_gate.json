@@ -3,15 +3,15 @@
   "category": "redstone",
   "key": {
     "R": {"item": "minecraft:redstone"},
-    "P": {"item": "minecraft:repeater"}
+    "O": {"item": "minecraft:observer"}
   },
   "pattern": [
     " R ",
-    "RPR",
+    "ROR",
     " R "
   ],
   "result": {
     "count": 4,
-    "id": "tracegates:and_gate"
+    "item": "tracegates:xor_gate"
   }
 }

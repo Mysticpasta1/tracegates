@@ -3,15 +3,15 @@
   "category": "redstone",
   "key": {
     "R": {"item": "minecraft:redstone"},
-    "T": {"item": "minecraft:redstone_torch"}
+    "C": {"item": "minecraft:comparator"}
   },
   "pattern": [
     " R ",
-    "RTR",
+    "RCR",
     " R "
   ],
   "result": {
     "count": 4,
-    "id": "tracegates:not_gate"
+    "item": "tracegates:nand_gate"
   }
 }

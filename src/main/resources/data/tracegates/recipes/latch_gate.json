@@ -2,16 +2,16 @@
   "type": "minecraft:crafting_shaped",
   "category": "redstone",
   "key": {
-    "C": {"item": "minecraft:comparator"},
-    "R": {"item": "minecraft:redstone"}
+    "R": {"item": "minecraft:redstone"},
+    "S": {"item": "minecraft:sticky_piston"}
   },
   "pattern": [
     " R ",
-    "RCR",
+    "RSR",
     " R "
   ],
   "result": {
     "count": 4,
-    "id": "tracegates:buffer_gate"
+    "item": "tracegates:latch_gate_off"
   }
 }

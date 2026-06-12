@@ -13,6 +13,6 @@
   ],
   "result": {
     "count": 4,
-    "id": "tracegates:read_trace"
+    "item": "tracegates:read_trace"
   }
 }

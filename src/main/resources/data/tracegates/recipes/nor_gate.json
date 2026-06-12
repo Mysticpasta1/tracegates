@@ -3,15 +3,15 @@
   "category": "redstone",
   "key": {
     "R": {"item": "minecraft:redstone"},
-    "S": {"item": "minecraft:sticky_piston"}
+    "B": {"item": "minecraft:redstone_block"}
   },
   "pattern": [
     " R ",
-    "RSR",
+    "RBR",
     " R "
   ],
   "result": {
     "count": 4,
-    "id": "tracegates:latch_gate_off"
+    "item": "tracegates:nor_gate"
   }
 }

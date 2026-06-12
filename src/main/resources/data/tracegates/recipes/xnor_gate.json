@@ -2,17 +2,16 @@
   "type": "minecraft:crafting_shaped",
   "category": "redstone",
   "key": {
-    "C": {"item": "minecraft:comparator"},
     "R": {"item": "minecraft:redstone"},
-    "T": {"item": "tracegates:trace"}
+    "D": {"item": "minecraft:daylight_detector"}
   },
   "pattern": [
-    " T ",
-    "RCR",
-    " T "
+    " R ",
+    "RDR",
+    " R "
   ],
   "result": {
     "count": 4,
-    "id": "tracegates:write_trace"
+    "item": "tracegates:xnor_gate"
   }
 }

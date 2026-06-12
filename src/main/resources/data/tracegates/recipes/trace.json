@@ -29,9 +29,6 @@
   ],
   "result": {
     "count": 8,
-    "id": "tracegates:trace",
-    "components": {
-      "custom_model_data": 1
-    }
+    "item": "tracegates:trace"
   }
 }

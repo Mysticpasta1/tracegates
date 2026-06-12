@@ -3,15 +3,15 @@
   "category": "redstone",
   "key": {
     "R": {"item": "minecraft:redstone"},
-    "L": {"item": "minecraft:lever"}
+    "P": {"item": "minecraft:repeater"}
   },
   "pattern": [
     " R ",
-    "RLR",
+    "RPR",
     " R "
   ],
   "result": {
     "count": 4,
-    "id": "tracegates:or_gate"
+    "item": "tracegates:and_gate"
   }
 }

@@ -2,16 +2,16 @@
   "type": "minecraft:crafting_shaped",
   "category": "redstone",
   "key": {
-    "R": {"item": "minecraft:redstone"},
-    "D": {"item": "minecraft:daylight_detector"}
+    "L": {"item": "minecraft:redstone_lamp"},
+    "R": {"item": "minecraft:redstone"}
   },
   "pattern": [
     " R ",
-    "RDR",
+    "RLR",
     " R "
   ],
   "result": {
     "count": 4,
-    "id": "tracegates:xnor_gate"
+    "item": "tracegates:led"
   }
 }
