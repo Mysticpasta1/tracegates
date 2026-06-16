@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "redstone",
+  "key": {
+    "R": {"item": "minecraft:redstone"},
+    "G": {"item": "minecraft:glowstone"}
+  },
+  "pattern": [
+    " R ",
+    "RGR",
+    " R "
+  ],
+  "result": {
+    "count": 4,
+    "id": "tracegates:lamp"
+  }
+}

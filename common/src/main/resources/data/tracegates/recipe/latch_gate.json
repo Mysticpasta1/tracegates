@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "redstone",
+  "key": {
+    "R": {"item": "minecraft:redstone"},
+    "S": {"item": "minecraft:sticky_piston"}
+  },
+  "pattern": [
+    " R ",
+    "RSR",
+    " R "
+  ],
+  "result": {
+    "count": 4,
+    "id": "tracegates:latch_gate_off"
+  }
+}
